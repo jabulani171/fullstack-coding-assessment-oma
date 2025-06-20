@@ -93,7 +93,7 @@ if (req.file.mimetype === 'application/pdf') {
       extractedText: extractedText,
     });
   });
-} else if (req.file.mimetype === 'image/png' || req.file.mimetype === 'image/jpeg') {
+} else if (req.file.mimetype === 'image/png' || req.file.mimetype === 'image/jpeg' || req.file.mimetype === 'image/jpg') {
 
   Tesseract.recognize(req.file.buffer, 'eng', function (err, result) {
     if (err) {
