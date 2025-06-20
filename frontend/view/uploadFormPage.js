@@ -33,5 +33,31 @@ export default function Home() {
   formData.append('firstName',firstName);
   formData.append('lastName',lastName);
   formData.append('dateOfBirth',dateOfBirth)
-  
 
+  const handleSubmit = () => {
+    fetch('http://localhost:5000/api/upload',{
+      method:'POST',
+      body: formData,
+  })
+    .then((response) => {
+      if(!response.ok) {
+        return Promise.reject(new Error('Failed to process the file.'));
+      }
+      retuern response.json();
+    }).then((result) => {
+      router.push({
+        pathname: '/result',
+        query: {data: JSON.stringfy(result) },
+      });
+    }).catch((err) => {
+      setError('There was an issue uploading your file. Please check your file and upload again.');
+    });
+  };
+
+  return ( 
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <h1>Upload Form</h1>
+    
+    )
+  
+}
