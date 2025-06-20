@@ -64,6 +64,13 @@ export default function Home() {
   required
     />
     </div>
+
+        <div>
+    <label>Last Name</label>
+    <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}
+  required
+    />
+    </div>
     </form>
     )
   
