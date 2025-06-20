@@ -71,6 +71,20 @@ export default function Home() {
   required
     />
     </div>
+
+          <div>
+    <label>Date Of Birth</label>
+    <input type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)}
+  required
+    />
+    </div>
+
+              <div>
+    <label>Upload File (PDF/Image)</label>
+    <input type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={(e) => setFile(e.target.files)}
+  required
+    />
+    </div>
     </form>
     )
   
