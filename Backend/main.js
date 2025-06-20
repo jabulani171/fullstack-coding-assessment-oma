@@ -11,10 +11,13 @@ app.use(cors({origin: 'http://localhost:3000',methods: ['POST'],
 app.use(helmet());
 app.use(express.json());
 
+//File size
 const upload = multer({ storage: multer.memoryStorage(), 
                        limits: {fileSize: 5 * 1024 * 1024},
                       });
 
+
+//Calculate age and return the number 
 function calculateUserAge(dateOfBirth) {
     const birthDate = new Date(dateOfBirth);
 
@@ -74,7 +77,7 @@ if (!firstName || !lastName || !dob || !file) {
 
 const age = calculateAge(dateOfBirth);
 
-
+//Extract data from the uploded file .pdf/.jpeg/jpg/png
 if (req.file.mimetype === 'application/pdf') {
   // If the file is a PDF
   pdfParse(req.file.buffer, function (err, pdfData) {
@@ -115,4 +118,10 @@ if (req.file.mimetype === 'application/pdf') {
 
   return res.status(400).json({ error: 'Unsupported file type. Use PDF or image (PNG/JPEG).' });
 }
+
+// Server start
+app.listen(port, function() {
+  console.log('Server is running on http://localhost:' + port);
+});
+
 
