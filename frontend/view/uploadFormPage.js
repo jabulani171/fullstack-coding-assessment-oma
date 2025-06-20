@@ -5,7 +5,7 @@ export default function Home() {
   let firstName = useState('');
   let lastname = useState('');
   let dateOfBirth = useState('');
-  let file = useState(null);
+  let filename = useState(null);
   let error = useState('');
   let router = useRouter();
 
@@ -21,5 +21,17 @@ export default function Home() {
     return;
 }
 
+  const dateOfBirthRegex = /\d{4}-\d{2}-\d{2}/;
+
+  if(!dateOfBirthRegex.test(dateOfBirth)){
+    setError('Please enter a date of birth in this format (YYYY-MM-DD).';
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('',filename);
+  formData.append('',firstName);
+  formData.append('',lastName);
+  formData.append('dateOfBirth',dateOfBirth)
   
 
