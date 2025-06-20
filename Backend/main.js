@@ -33,5 +33,17 @@ function calculateUserAge(dateOfBirth) {
     return age;
 }
 
+app.post('',upload.single('file',(req,res) => {
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const dateOfBirth = req.body.dateOfBirth;
+  const file= req.file;
+})
+if (!firstName || !lastName || !dob || !file) {
+  res.status(400)json({
+    error: 'Please fill all the fields and upload the file.'
+  });
+  return;
+}
 
     
