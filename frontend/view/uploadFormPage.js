@@ -9,6 +9,17 @@ export default function Home() {
   let error = useState('');
   let router = useRouter();
 
-  const
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError(() => '')
+  }
+
+  //fields validation input
+  if(!firstName || !lastname ||!dateOfBirth || !file)
+  {
+    setError('Please enter all the fields');
+    return;
 }
+
+  
 
