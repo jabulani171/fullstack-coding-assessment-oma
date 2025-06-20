@@ -81,10 +81,12 @@ export default function Home() {
 
               <div>
     <label>Upload File (PDF/Image)</label>
-    <input type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={(e) => setFile(e.target.files)}
+    <input type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={(e) => setFile(e.target.files[0])}
   required
     />
     </div>
+
+    <button>Submnit Info</button>
     </form>
     )
   
