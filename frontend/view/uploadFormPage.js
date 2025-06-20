@@ -57,7 +57,14 @@ export default function Home() {
   return ( 
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <h1>User Input Details and File upload</h1>
-    
+    <form onSubmit={handleSubmit}>
+    <div>
+    <label>First Name</label>
+    <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}
+  required
+    />
+    </div>
+    </form>
     )
   
 }
