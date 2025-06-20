@@ -86,7 +86,7 @@ export default function Home() {
     />
     </div>
 
-    <button>Submnit Info</button>
+    <button type="submit"      className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Submnit Info</button>
     </form>
     )
   
