@@ -36,6 +36,8 @@ if(!output)
 
     <div className="mb-4">
     <h2>Age</h2>
-  <p>output.fullName</p>
+  <pre className="bg-gray-100 p-4 rounded overflow-auto max-h-64">output.extractedText</pre>
     </div>
+
+  <button onClick={() => router.push('/') } className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Return to home page</button>
   )
