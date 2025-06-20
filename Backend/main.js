@@ -39,6 +39,7 @@ app.post('',upload.single('file',(req,res) => {
   const dateOfBirth = req.body.dateOfBirth;
   const file= req.file;
 })
+         
 if (!firstName || !lastName || !dob || !file) {
   res.status(400)json({
     error: 'Please fill all the fields and upload the file.'
@@ -46,4 +47,29 @@ if (!firstName || !lastName || !dob || !file) {
   return;
 }
 
-    
+  // Use the regex to test the dob value
+  const isValidFormat = dobRegex.test(dateOfBirth);
+
+  if (!isValidFormat) {
+    // If the format is wrong, send an error message
+    res.status(400).json({
+      error: 'Date of birth must be in this format: YYYY-MM-DD'
+    });
+    return; // Stop the function
+  }
+
+  const dobParts = dob.split('-');
+  const year = dobParts[0];
+  const month = dobParts[1];
+  const day = dobParts[2];
+
+
+  const now = new Date();
+  const isoString = now.toISOString();
+  const dateParts = isoString.split('T');
+  const today = dateParts[0];
+
+  const fullName = firstName + ' ' + lastName;
+
+
+const age = calculateAge(dateOfBirth);
