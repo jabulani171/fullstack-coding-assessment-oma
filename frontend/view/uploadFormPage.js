@@ -56,30 +56,31 @@ export default function Home() {
 
   return ( 
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <h1>User Input Details and File upload</h1>
+          <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-6 text-center">User Input Details and File upload</h1>
     <form onSubmit={handleSubmit}>
-    <div>
+    <div className="mb-4">
     <label>First Name</label>
     <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}
   required
     />
     </div>
 
-        <div>
+        <div className="mb-4">
     <label>Last Name</label>
     <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}
   required
     />
     </div>
 
-          <div>
+          <div className="mb-4">
     <label>Date Of Birth</label>
     <input type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)}
   required
     />
     </div>
 
-              <div>
+              <div className="mb-4">
     <label>Upload File (PDF/Image)</label>
     <input type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={(e) => setFile(e.target.files[0])}
   required
