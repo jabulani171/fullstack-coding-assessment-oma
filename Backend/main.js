@@ -36,13 +36,13 @@ function calculateUserAge(dateOfBirth) {
     return age;
 }
 
-app.post('',upload.single('file',(req,res) => {
+app.post('/api/upload',upload.single('file',(req,res) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const dateOfBirth = req.body.dateOfBirth;
   const file= req.file;
 })
-         
+    //Input validation if statement     
 if (!firstName || !lastName || !dob || !file) {
   res.status(400)json({
     error: 'Please fill all the fields and upload the file.'
@@ -50,7 +50,7 @@ if (!firstName || !lastName || !dob || !file) {
   return;
 }
 
-  // Use the regex to test the dob value
+  // Use the regex to test the date of birth value
   const isValidFormat = dobRegex.test(dateOfBirth);
 
   if (!isValidFormat) {
