@@ -73,3 +73,46 @@ if (!firstName || !lastName || !dob || !file) {
 
 
 const age = calculateAge(dateOfBirth);
+
+
+if (req.file.mimetype === 'application/pdf') {
+  // If the file is a PDF
+  pdfParse(req.file.buffer, function (err, pdfData) {
+    if (err) {
+      console.error('Error processing PDF:', err);
+      return res.status(500).json({ error: 'Failed to process the PDF.' });
+    }
+
+   
+    const extractedText = pdfData.text;
+
+
+    res.json({
+      fullName: fullName,
+      age: age,
+      extractedText: extractedText,
+    });
+  });
+} else if (req.file.mimetype === 'image/png' || req.file.mimetype === 'image/jpeg') {
+
+  Tesseract.recognize(req.file.buffer, 'eng', function (err, result) {
+    if (err) {
+      console.error('Error processing image:', err);
+      return res.status(500).json({ error: 'Failed to process the image.' });
+    }
+
+   
+    const extractedText = result.data.text;
+
+  
+    res.json({
+      fullName: fullName,
+      age: age,
+      extractedText: extractedText,
+    });
+  });
+} else {
+
+  return res.status(400).json({ error: 'Unsupported file type. Use PDF or image (PNG/JPEG).' });
+}
+
