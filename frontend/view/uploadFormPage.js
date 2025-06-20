@@ -29,9 +29,9 @@ export default function Home() {
   }
 
   const formData = new FormData();
-  formData.append('',filename);
-  formData.append('',firstName);
-  formData.append('',lastName);
+  formData.append('filename',filename);
+  formData.append('firstName',firstName);
+  formData.append('lastName',lastName);
   formData.append('dateOfBirth',dateOfBirth)
   
 
